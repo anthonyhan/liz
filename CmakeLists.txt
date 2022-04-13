@@ -1,0 +1,33 @@
+cmake_minimum_required(VERSION 3.0)
+project(liz VERSION 0.10.0)
+
+# specify the C++ standard
+set(CMAKE_C_STANDARD_REQUIRED True)
+set(CMAKE_C_STANDARD 11)
+
+file(GLOB LIZ_SOURCES
+    "src/c/liz/*.h"
+    "src/c/liz/*.c"
+)
+
+include_directories("src/c")
+add_library(${PROJECT_NAME} ${LIZ_SOURCES})
+
+
+
+
+# # build the test runner
+# file(GLOB TEST_SRCS RELATIVE ${LIZ_SOURCES} tests/*.cpp tests/*.h)
+# source_group( "" FILES ${TEST_SRCS})
+# add_executable(TestUnitTest++ ${TEST_SRCS})
+
+# include_directories("src/c")
+# target_link_libraries(TestUnitTest++ 
+# 	PUBLIC
+# 		UnitTest++::UnitTest++
+# 	)
+
+# # run unit tests as post build step
+# add_custom_command(TARGET TestUnitTest++
+#     POST_BUILD COMMAND TestUnitTest++
+#     COMMENT "Running unit tests")
