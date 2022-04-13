@@ -96,11 +96,18 @@ extern "C" {
         LIZ_ASSERT(LIZ_LOOKASIDE_DOUBLE_STACK_CAPACITY_MAX >= capacity);
         LIZ_ASSERT(low_side_element_count + high_side_element_count <= capacity);
      
-        return (liz_lookaside_double_stack_t){
+        //return (liz_lookaside_double_stack_t){
+        //    (uint16_t)capacity,
+        //    (uint16_t)low_side_element_count,
+        //    (uint16_t)high_side_element_count
+        //};
+        liz_lookaside_double_stack_t ret = {
             (uint16_t)capacity,
-            (uint16_t)low_side_element_count,
-            (uint16_t)high_side_element_count
+                (uint16_t)low_side_element_count,
+                (uint16_t)high_side_element_count
         };
+
+        return ret;
     }
     
     

@@ -946,7 +946,7 @@ operator<<(UnitTest::MemoryOutStream& mos,
 }
 
 
-
+/*
 
 void
 liz_vm_print(UnitTest::MemoryOutStream& mos,
@@ -1031,7 +1031,7 @@ liz_vm_print(UnitTest::MemoryOutStream& mos,
     mos << "}" << LIZ_VM_PRINT_FIELD_SEPARATOR;
 }
 
-
+*/
 
 
 UnitTest::MemoryOutStream&
@@ -1862,11 +1862,12 @@ liz_vm_test_fixture::push_vm_action_launch_request(liz_vm_test_fixture::target_s
                                         LIZ_VM_ACTION_REQUEST_STACK_SIDE_LAUNCH);
         liz_int_t const top_index = liz_lookaside_double_stack_top_index(&vm->action_request_stack_header, LIZ_VM_ACTION_REQUEST_STACK_SIDE_LAUNCH);
         
-        vm->action_requests[top_index] = (liz_vm_action_request_t){
-            action_id,
-            resource_id,
-            shape_atom_index
-        };
+        //vm->action_requests[top_index] = (liz_vm_action_request_t){
+        //    action_id,
+        //    resource_id,
+        //    shape_atom_index
+        //};
+        vm->action_requests[top_index] = { action_id, resource_id, shape_atom_index };
     }
     
     if (target_vm == target_select_proband 
@@ -1878,11 +1879,12 @@ liz_vm_test_fixture::push_vm_action_launch_request(liz_vm_test_fixture::target_s
                                         LIZ_VM_ACTION_REQUEST_STACK_SIDE_LAUNCH);
         liz_int_t const top_index = liz_lookaside_double_stack_top_index(&vm->action_request_stack_header, LIZ_VM_ACTION_REQUEST_STACK_SIDE_LAUNCH);
         
-        vm->action_requests[top_index] = (liz_vm_action_request_t){
+        /*vm->action_requests[top_index] = (liz_vm_action_request_t){
             action_id,
             resource_id,
             shape_atom_index
-        };
+        };*/
+		vm->action_requests[top_index] = { action_id, resource_id, shape_atom_index };
     }
 }
 
@@ -1902,11 +1904,12 @@ liz_vm_test_fixture::push_vm_action_cancel_request(liz_vm_test_fixture::target_s
                                         LIZ_VM_ACTION_REQUEST_STACK_SIDE_CANCEL);
         liz_int_t const top_index = liz_lookaside_double_stack_top_index(&vm->action_request_stack_header, LIZ_VM_ACTION_REQUEST_STACK_SIDE_CANCEL);
         
-        vm->action_requests[top_index] = (liz_vm_action_request_t){
+        /*vm->action_requests[top_index] = (liz_vm_action_request_t){
             action_id,
             resource_id,
             shape_atom_index
-        };
+        };*/
+		vm->action_requests[top_index] = { action_id, resource_id, shape_atom_index };
     }
     
     if (target_vm == target_select_proband 
@@ -1918,11 +1921,12 @@ liz_vm_test_fixture::push_vm_action_cancel_request(liz_vm_test_fixture::target_s
                                         LIZ_VM_ACTION_REQUEST_STACK_SIDE_CANCEL);
         liz_int_t const top_index = liz_lookaside_double_stack_top_index(&vm->action_request_stack_header, LIZ_VM_ACTION_REQUEST_STACK_SIDE_CANCEL);
         
-        vm->action_requests[top_index] = (liz_vm_action_request_t){
+        /*vm->action_requests[top_index] = (liz_vm_action_request_t){
             action_id,
             resource_id,
             shape_atom_index
-        };
+        };*/
+		vm->action_requests[top_index] = { action_id, resource_id, shape_atom_index };
     }
 }
 

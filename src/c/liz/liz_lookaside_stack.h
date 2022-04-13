@@ -88,7 +88,9 @@ extern "C" {
         LIZ_ASSERT(count <=capacity);
         LIZ_ASSERT(capacity <= LIZ_LOOKASIDE_STACK_CAPACITY_MAX);
         
-        return (liz_lookaside_stack_t){capacity, count};
+		//return (liz_lookaside_stack_t) { (uint16_t)capacity, (uint16_t)count };
+		liz_lookaside_stack_t ret = { (uint16_t)capacity, (uint16_t)count };
+        return ret;
     }
     
     

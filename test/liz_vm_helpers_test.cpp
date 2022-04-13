@@ -46,9 +46,9 @@
 #include "liz_test_helpers.h"
 
 
-
 SUITE(liz_vm_helpers_test)
 {
+#ifndef _WIN32
     TEST(sort_decider_states_empty)
     {
         liz_int_t const state_count = 0;
@@ -105,7 +105,8 @@ SUITE(liz_vm_helpers_test)
         CHECK_ARRAY_EQUAL(expected_state_shape_atom_indices, state_shape_atom_indices, state_count);
     }
     
-    
+#endif // _WIN32
+
     
     TEST(sort_decider_states_already_ordered)
     {

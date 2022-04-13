@@ -13,21 +13,25 @@ file(GLOB LIZ_SOURCES
 include_directories("src/c")
 add_library(${PROJECT_NAME} ${LIZ_SOURCES})
 
+# build the test runner
 
+# specify the C++ standard
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+set(CMAKE_CXX_STANDARD 11)
 
+file(GLOB TEST_SRCS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} test/*.cpp test/*.h)
+include_directories("src/c")
+include_directories("external/unittest-cpp/UnitTest++")
+source_group( "" FILES ${TEST_SRCS})
+add_executable(liz-test-runner ${TEST_SRCS})
 
-# # build the test runner
-# file(GLOB TEST_SRCS RELATIVE ${LIZ_SOURCES} tests/*.cpp tests/*.h)
-# source_group( "" FILES ${TEST_SRCS})
-# add_executable(TestUnitTest++ ${TEST_SRCS})
-
-# include_directories("src/c")
-# target_link_libraries(TestUnitTest++ 
-# 	PUBLIC
-# 		UnitTest++::UnitTest++
-# 	)
-
-# # run unit tests as post build step
-# add_custom_command(TARGET TestUnitTest++
-#     POST_BUILD COMMAND TestUnitTest++
-#     COMMENT "Running unit tests")
+#add_subdirectory(external/unittest-cpp)
+target_link_libraries(liz-test-runner 
+	PUBLIC
+    unittest-cpp
+	)
+target_compile_options(liz-test-runner PRIVATE /Za)
+# run unit tests as post build step
+add_custom_command(TARGET liz-test-runner
+    POST_BUILD COMMAND liz-test-runner
+    COMMENT "Running unit tests")
