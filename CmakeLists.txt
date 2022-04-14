@@ -31,11 +31,21 @@ add_library(${PROJECT_NAME} ${LIZ_SOURCES})
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_CXX_STANDARD 11)
 
-# UnitTest++ Lib
+## UnitTest++ Lib
+# overwrite install() command with a dummy macro that is a nop
+macro (install)
+endmacro ()
+
 add_compile_definitions(UNITTEST_USE_CUSTOM_STREAMS)
 add_subdirectory(external/unittest-cpp EXCLUDE_FROM_ALL)
 
-# build the test runner
+# replace install macro by one which simply invokes the CMake
+#install() function with the given arguments
+macro (install)
+  _install(${ARGV})
+endmacro(install)
+
+## build the test for liz
 file(GLOB TEST_SRCS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} test/*.cpp test/*.h)
 include_directories("src/c")
 include_directories("external/unittest-cpp/UnitTest++")
