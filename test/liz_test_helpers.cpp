@@ -946,7 +946,6 @@ operator<<(UnitTest::MemoryOutStream& mos,
 }
 
 
-/*
 
 void
 liz_vm_print(UnitTest::MemoryOutStream& mos,
@@ -1031,7 +1030,6 @@ liz_vm_print(UnitTest::MemoryOutStream& mos,
     mos << "}" << LIZ_VM_PRINT_FIELD_SEPARATOR;
 }
 
-*/
 
 
 UnitTest::MemoryOutStream&
